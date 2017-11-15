@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <application>
+        <resource-bundle>
+            <base-name>application.web.lang.resource</base-name>
+            <var>text</var>
+        </resource-bundle>
+    </application>    
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id> 
+        <navigation-case>`
+            <from-outcome>success</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/bad-login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>regi</from-outcome>
+            <to-view-id>/register.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <display-name>meal-menu.xhtml</display-name>
+        <from-view-id>/meal-menu.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>goToCart</from-outcome>
+            <to-view-id>/shopping-cart.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>back</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <display-name>welcome.xhtml</display-name>
+        <from-view-id>/welcome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>goToCart</from-outcome>
+            <to-view-id>/shopping-cart.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToMenu</from-outcome>
+            <to-view-id>/meal-menu.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/register.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{userManager.fieldsNotEmpty</from-action>
+            <from-outcome>empty</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{userManager.cancel()}</from-action>
+            <from-outcome>noValidate</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+        
+    <navigation-rule>
+        <from-view-id>/order-confirmed.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>back</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/shopping-cart.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>back</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+   
+    
+    <navigation-rule>
+        <from-view-id>/welcome.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{userManager.logout()}</from-action>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{bundleController.locale}">
+        <h:head>
+            <title>Facelet Title</title>
+        </h:head>
+        <h:body>
+            <h1>#{text.order}</h1>
+            <h1>#{text.basket}</h1>
+            <h:dataTable id="cartTable" value="#{orderManager.cart}" var="order" border="2">
+                <h:column>
+                    <f:facet name="header">#{text.order_name}</f:facet>
+                        #{order.idFood.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{text.order_price}</f:facet>
+                        #{order.idFood.price}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{text.order_date}</f:facet>
+                        #{order.date}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{text.delete_from_basket}</f:facet>
+                    <h:form><h:commandButton value="#{text.del_value}" action="#{orderManager.removeFromCart(order)}" /></h:form>
+                </h:column>
+            </h:dataTable>
+
+            #{text.full_price}: #{orderManager.fullPrice}
+            <h:form>
+                <h:commandLink value="#{text.order_confirm}" action="#{orderManager.makeOrder(userManager.user)}" />
+            </h:form>
+            <h:form>
+                <h:commandLink value="#{text.back}" action="back" />
+            </h:form>
+        </h:body>
+    </f:view> 
+</html>
+

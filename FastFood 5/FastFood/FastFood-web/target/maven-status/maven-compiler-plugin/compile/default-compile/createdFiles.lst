@@ -1,0 +1,5 @@
+application\web\lang\BundleController.class
+application\web\manager\UserManager.class
+application\web\manager\OrderManager.class
+application\web\validator\EmailValidator.class
+application\web\manager\FoodManager.class

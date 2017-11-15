@@ -1,0 +1,3 @@
+application\ejb\mdb\MessageBeanTest.class
+application\ejb\test\TestRunner.class
+application\ejb\pdf\PdfCreatorTest.class

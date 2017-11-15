@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:my="http://java.sun.com/jsf/composite/myComponent"
+      xmlns:myComponent="http://xmlns.jcp.org/jsf/composite/myComponent">
+    <f:view locale="#{bundleController.locale}">
+        <h:head>
+            <title>Facelet Title</title>
+        </h:head>
+        <h:body>
+            <h1>#{text.author1}</h1>
+            <h1>#{text.author2}</h1>
+            <h1>#{text.author3}</h1>
+            <h1>#{text.author4}</h1>
+            <h1>#{text.site_name}</h1>
+
+            <myComponent:loginComponent usernameLabel="#{text.username}"
+                                        usernameValue="#{userManager.user.username}"
+                                        passwordLabel="#{text.password}"
+                                        passwordValue="#{userManager.user.password}"
+                                        loginBtn="#{text.login}"
+                                        loginAction="#{userManager.login()}"
+                                        /><br />
+            <h:form>
+                <h:commandLink value="#{text.not_have_account}" action="regi" />
+            </h:form>
+
+            <h:form>
+                <h:selectOneMenu value="#{bundleController.language}" onchange="submit()">
+                    <f:selectItem itemValue="pl" itemLabel="Polski" />
+                    <f:selectItem itemValue="en" itemLabel="English" />
+                </h:selectOneMenu>
+            </h:form>
+
+        </h:body>
+    </f:view>
+</html>
+
